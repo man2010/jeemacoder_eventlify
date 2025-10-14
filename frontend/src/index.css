@@ -1,0 +1,127 @@
+:root {
+  --bg: #0b1220;
+  --surface: #111827;
+  --card: #0f172a;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #22c55e;
+  --primary-600: #16a34a;
+  --chip: #1f2937;
+  --chip-on: #065f46;
+  --border: #1f2937;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg), #04070f 60%);
+  color: var(--text);
+}
+
+#root {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 20px;
+}
+
+.brand {
+  font-weight: 800;
+  background: linear-gradient(90deg, #22c55e, #2dd4bf);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 28px;
+}
+
+.subtitle { color: var(--muted); font-size: 14px; }
+
+.filters {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 12px;
+  background: rgba(17, 24, 39, 0.8);
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.filters input[type="text"],
+.filters select, .filters input[type="number"] {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.chips { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0; }
+.chips legend { margin-right: 8px; color: var(--muted); font-size: 13px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; background: var(--chip); border: 1px solid var(--border); color: var(--text); padding: 6px 10px; border-radius: 999px; cursor: pointer; }
+.chip input { display: none; }
+.chip.on { background: var(--chip-on); border-color: #10b981; }
+
+.min-pay { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+.min-pay input { max-width: 120px; }
+
+.grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.sidebar { grid-column: span 4; }
+.content { grid-column: span 8; }
+
+@media (max-width: 900px) {
+  .filters { grid-template-columns: 1fr; }
+  .sidebar, .content { grid-column: span 12; }
+}
+
+.job-card {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+.job-header { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+.badge { background: #0ea5e9; color: #00131f; padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.muted { color: var(--muted); margin: 4px 0 8px; }
+.reqs { margin: 8px 0; padding-left: 18px; color: var(--muted); }
+.pay { margin-top: 8px; font-weight: 700; color: #a7f3d0; }
+
+.timeslots { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.timeslot { background: #111827; color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; cursor: pointer; }
+.timeslot .weekday { color: #86efac; margin-right: 6px; font-weight: 700; }
+.timeslot:hover { border-color: #059669; }
+
+.empty { color: var(--muted); text-align: center; padding: 32px; border: 1px dashed var(--border); border-radius: 12px; }
+
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal {
+  width: min(520px, 92vw);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+}
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+.btn-primary { background: var(--primary); color: #03140a; border: none; padding: 8px 12px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+.btn-primary:hover { background: var(--primary-600); }
+.btn-secondary { background: #0b1220; color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+
+.toast { position: fixed; bottom: 16px; right: 16px; background: #064e3b; color: #d1fae5; border: 1px solid #065f46; padding: 10px 12px; border-radius: 10px; }
